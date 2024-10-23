@@ -1,0 +1,4 @@
+[debug] [chip8-test] Classpath dependencies List()
+[debug] [chip8-test] Dependencies from configurations List(chip8)
+[debug] Bloop wrote the configuration of project 'chip8-test' to '/home/marwandr/Uni/chip8/.bloop/chip8-test.json'
+[success] Generated .bloop/chip8-test.json

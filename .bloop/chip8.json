@@ -1,0 +1,487 @@
+{
+    "version": "1.4.0",
+    "project": {
+        "name": "chip8",
+        "directory": "/home/marwandr/Uni/chip8",
+        "workspaceDir": "/home/marwandr/Uni/chip8",
+        "sources": [
+            "/home/marwandr/Uni/chip8/src/main/scala",
+            "/home/marwandr/Uni/chip8/src/main/scala-2.12",
+            "/home/marwandr/Uni/chip8/src/main/scala-2",
+            "/home/marwandr/Uni/chip8/src/main/java",
+            "/home/marwandr/Uni/chip8/target/scala-2.12/src_managed/main",
+            "/home/marwandr/Uni/chip8/sound.scala",
+            "/home/marwandr/Uni/chip8/chip8.scala",
+            "/home/marwandr/Uni/chip8/FontSet.scala",
+            "/home/marwandr/Uni/chip8/chipContext.scala",
+            "/home/marwandr/Uni/chip8/Chip8EmulatorGUI.scala"
+        ],
+        "dependencies": [
+            
+        ],
+        "classpath": [
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.19/scala-library-2.12.19.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/processing/core/3.3.7/core-3.3.7.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt-main/2.3.2/gluegen-rt-main-2.3.2.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl/2.3.2/jogl-2.3.2.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all-main/2.3.2/jogl-all-main-2.3.2.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt-main/2.3.2/newt-main-2.3.2.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow-main/2.3.2/nativewindow-main-2.3.2.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-android-aarch64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-android-armv6.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-linux-amd64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-linux-armv6.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-linux-armv6hf.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-linux-i586.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-macosx-universal.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-solaris-amd64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-solaris-i586.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-windows-amd64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-windows-i586.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-android-aarch64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-android-armv6.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-linux-amd64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-linux-armv6.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-linux-armv6hf.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-linux-i586.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-macosx-universal.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-solaris-amd64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-solaris-i586.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-windows-amd64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-windows-i586.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-event.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-ogl.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-android.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-bcm-old.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-bcm-vc.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-intelgdl.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-kd.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-linux.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-osx.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-win.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-x11.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-android-aarch64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-android-armv6.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-linux-amd64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-linux-armv6.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-linux-armv6hf.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-linux-i586.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-macosx-universal.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-solaris-amd64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-solaris-i586.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-windows-amd64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-windows-i586.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-os-win.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-os-osx.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-os-x11.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-android-aarch64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-android-armv6.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-linux-amd64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-linux-armv6.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-linux-armv6hf.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-linux-i586.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-macosx-universal.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-solaris-amd64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-solaris-i586.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-windows-amd64.jar",
+            "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-windows-i586.jar"
+        ],
+        "out": "/home/marwandr/Uni/chip8/.bloop/chip8",
+        "classesDir": "/home/marwandr/Uni/chip8/.bloop/chip8/scala-2.12/classes",
+        "resources": [
+            "/home/marwandr/Uni/chip8/src/main/resources",
+            "/home/marwandr/Uni/chip8/target/scala-2.12/resource_managed/main"
+        ],
+        "scala": {
+            "organization": "org.scala-lang",
+            "name": "scala-compiler",
+            "version": "2.12.19",
+            "options": [
+                
+            ],
+            "jars": [
+                "/home/marwandr/.sbt/boot/scala-2.12.19/lib/scala-library.jar",
+                "/home/marwandr/.sbt/boot/scala-2.12.19/lib/scala-reflect.jar",
+                "/home/marwandr/.sbt/boot/scala-2.12.19/lib/scala-xml_2.12-2.2.0.jar",
+                "/home/marwandr/.sbt/boot/scala-2.12.19/lib/scala-compiler.jar"
+            ],
+            "setup": {
+                "order": "mixed",
+                "addLibraryToBootClasspath": true,
+                "addCompilerToClasspath": false,
+                "addExtraJarsToClasspath": false,
+                "manageBootClasspath": true,
+                "filterLibraryFromClasspath": true
+            }
+        },
+        "java": {
+            "options": [
+                
+            ]
+        },
+        "test": {
+            "frameworks": [
+                {
+                    "names": [
+                        "org.scalacheck.ScalaCheckFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs2.runner.Specs2Framework",
+                        "org.specs2.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.specs.runner.SpecsFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "org.scalatest.tools.Framework",
+                        "org.scalatest.tools.ScalaTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "com.novocode.junit.JUnitFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "munit.Framework"
+                    ]
+                },
+                {
+                    "names": [
+                        "zio.test.sbt.ZTestFramework"
+                    ]
+                },
+                {
+                    "names": [
+                        "weaver.framework.CatsEffect"
+                    ]
+                },
+                {
+                    "names": [
+                        "hedgehog.sbt.Framework"
+                    ]
+                }
+            ],
+            "options": {
+                "excludes": [
+                    
+                ],
+                "arguments": [
+                    
+                ]
+            }
+        },
+        "platform": {
+            "name": "jvm",
+            "config": {
+                "home": "/usr/lib/jvm/java-17-openjdk-amd64",
+                "options": [
+                    "-Duser.dir=/home/marwandr/Uni/chip8"
+                ]
+            },
+            "mainClass": [
+                
+            ],
+            "runtimeConfig": {
+                "home": "/usr/lib/jvm/java-17-openjdk-amd64",
+                "options": [
+                    "-Duser.dir=/home/marwandr/Uni/chip8"
+                ]
+            },
+            "classpath": [
+                "/home/marwandr/Uni/chip8/.bloop/chip8/scala-2.12/classes",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.19/scala-library-2.12.19.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/processing/core/3.3.7/core-3.3.7.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt-main/2.3.2/gluegen-rt-main-2.3.2.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl/2.3.2/jogl-2.3.2.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all-main/2.3.2/jogl-all-main-2.3.2.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt-main/2.3.2/newt-main-2.3.2.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow-main/2.3.2/nativewindow-main-2.3.2.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-android-aarch64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-android-armv6.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-linux-amd64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-linux-armv6.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-linux-armv6hf.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-linux-i586.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-macosx-universal.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-solaris-amd64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-solaris-i586.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-windows-amd64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-windows-i586.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-android-aarch64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-android-armv6.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-linux-amd64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-linux-armv6.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-linux-armv6hf.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-linux-i586.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-macosx-universal.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-solaris-amd64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-solaris-i586.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-windows-amd64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-windows-i586.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-event.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-ogl.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-android.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-bcm-old.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-bcm-vc.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-intelgdl.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-kd.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-linux.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-osx.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-win.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-x11.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-android-aarch64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-android-armv6.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-linux-amd64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-linux-armv6.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-linux-armv6hf.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-linux-i586.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-macosx-universal.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-solaris-amd64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-solaris-i586.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-windows-amd64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-windows-i586.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-os-win.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-os-osx.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-os-x11.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-android-aarch64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-android-armv6.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-linux-amd64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-linux-armv6.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-linux-armv6hf.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-linux-i586.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-macosx-universal.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-solaris-amd64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-solaris-i586.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-windows-amd64.jar",
+                "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-windows-i586.jar"
+            ]
+        },
+        "resolution": {
+            "modules": [
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-library",
+                    "version": "2.12.19",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "scala-library",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.19/scala-library-2.12.19.jar"
+                        },
+                        {
+                            "name": "scala-library",
+                            "classifier": "sources",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.19/scala-library-2.12.19-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.processing",
+                    "name": "core",
+                    "version": "3.3.7",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "core",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/processing/core/3.3.7/core-3.3.7.jar"
+                        },
+                        {
+                            "name": "core",
+                            "classifier": "sources",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/processing/core/3.3.7/core-3.3.7-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.jogamp.gluegen",
+                    "name": "gluegen-rt-main",
+                    "version": "2.3.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "gluegen-rt-main",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt-main/2.3.2/gluegen-rt-main-2.3.2.jar"
+                        },
+                        {
+                            "name": "gluegen-rt-main",
+                            "classifier": "sources",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt-main/2.3.2/gluegen-rt-main-2.3.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.jogamp.jogl",
+                    "name": "jogl",
+                    "version": "2.3.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "jogl",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl/2.3.2/jogl-2.3.2.jar"
+                        },
+                        {
+                            "name": "jogl",
+                            "classifier": "sources",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl/2.3.2/jogl-2.3.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.jogamp.jogl",
+                    "name": "jogl-all-main",
+                    "version": "2.3.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "jogl-all-main",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all-main/2.3.2/jogl-all-main-2.3.2.jar"
+                        },
+                        {
+                            "name": "jogl-all-main",
+                            "classifier": "sources",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all-main/2.3.2/jogl-all-main-2.3.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.jogamp.jogl",
+                    "name": "newt-main",
+                    "version": "2.3.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "newt-main",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt-main/2.3.2/newt-main-2.3.2.jar"
+                        },
+                        {
+                            "name": "newt-main",
+                            "classifier": "sources",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt-main/2.3.2/newt-main-2.3.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.jogamp.jogl",
+                    "name": "nativewindow-main",
+                    "version": "2.3.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "nativewindow-main",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow-main/2.3.2/nativewindow-main-2.3.2.jar"
+                        },
+                        {
+                            "name": "nativewindow-main",
+                            "classifier": "sources",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow-main/2.3.2/nativewindow-main-2.3.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.jogamp.gluegen",
+                    "name": "gluegen-rt",
+                    "version": "2.3.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "gluegen-rt",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2.jar"
+                        },
+                        {
+                            "name": "gluegen-rt",
+                            "classifier": "sources",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.jogamp.jogl",
+                    "name": "jogl-all",
+                    "version": "2.3.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "jogl-all",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2.jar"
+                        },
+                        {
+                            "name": "jogl-all",
+                            "classifier": "sources",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.jogamp.jogl",
+                    "name": "newt",
+                    "version": "2.3.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "newt",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2.jar"
+                        },
+                        {
+                            "name": "newt",
+                            "classifier": "sources",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.jogamp.jogl",
+                    "name": "nativewindow",
+                    "version": "2.3.2",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "nativewindow",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2.jar"
+                        },
+                        {
+                            "name": "nativewindow",
+                            "classifier": "sources",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "org.scala-lang",
+                    "name": "scala-library",
+                    "version": "2.12.19",
+                    "configurations": "optional",
+                    "artifacts": [
+                        {
+                            "name": "scala-library",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.19/scala-library-2.12.19.jar"
+                        },
+                        {
+                            "name": "scala-library",
+                            "classifier": "sources",
+                            "path": "/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.19/scala-library-2.12.19-sources.jar"
+                        }
+                    ]
+                }
+            ]
+        },
+        "tags": [
+            "library"
+        ]
+    }
+}

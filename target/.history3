@@ -1,0 +1,88 @@
+1728479481715:compile
+1728479492336:run
+1728479656421:compile
+1728480125577:sbt
+1728480127628:compile
+1728480131084:run
+1728480289970:compile
+1728480367559:run chip8.Chip8Emulator ./roms/octoachip8story.ch8
+1728480434648:compile
+1728480438771:sbt run ./roms/octoachip8story.ch8
+1728480455180:run ./roms/octoachip8story.ch8
+1728480492995:compile
+1728480494399:sbt run ./roms/octoachip8story.ch8
+1728480498396:run ./roms/octoachip8story.ch8
+1728480817878:run roms/octoachip8story.ch8
+1729686801724:run
+1729686827560:run roms/octoachip8story.ch8
+1729690643776:run roms/SCTEST.CH8
+1729690850737:compile
+1729690870954:run roms/SCTEST.CH8
+1729691331650:run c8_test.c8
+1729691359822:run roms/c8_test.ch8
+1729691392777:run roms/test.c8
+1729691929553:run roms/sctest.ch8
+1729691955213:run roms/SCTESET.CH8
+1729691972008:run roms/SCTEST.CH8
+1729696071034:compile
+1729696073006:run roms/SCTEST.CH8
+1729697568046:compile
+1729697589669:run roms/SCTEST.CH8
+1729698196795:run roms/octoachip8story.ch8
+1729698496275:run roms/1-chip8-logo.ch8
+1729699058409:compile
+1729699060511:run roms/1-chip8-logo.ch8
+1729699084971:compile
+1729699086196:run roms/1-chip8-logo.ch8
+1729699331996:compile
+1729699334499:run roms/1-chip8-logo.ch8
+1729699364898:run roms/SCTEST.CH8
+1729699398843:run roms/octoachip8story.ch8
+1729699702931:run roms/2-ibm-logo.ch8
+1729699726150:run roms/3-corax+.ch8
+1729701341891:run roms/4-flags.ch8
+1729702302067:run roms/3-corax+.ch8
+1729702340912:run roms/5-quirks.ch8
+1729702478977:compile
+1729702483354:run roms/5-quirks.ch8
+1729702670316:compile
+1729702674932:run roms/5-quirks.ch8
+1729703651966:run roms/4-flags.ch8
+1729704367180:compile
+1729704592973:run roms/4-flags.ch8
+1729704778564:compile
+1729706199052:run roms/4-flags.ch8
+1729706689819:run roms/3-corax+.ch8
+1729708055744:run roms/4-flags.ch8
+1729708317272:run roms/3-corax+.ch8
+1729718631043:compile
+1729718640627:run roms/3-corax+.ch8
+1729718689525:compile
+1729718694684:run roms/3-corax+.ch8
+1729721276839:compile
+1729721280139:run roms/3-corax+.ch8
+1729721317107:run roms/4-flags.ch8
+1729715697861:compile
+1729715699782:run roms/4-flags.ch8
+1729715713616:compile
+1729715718718:run roms/4-flags.ch8
+1729715870366:run roms/3-corax+.ch8
+1729715975041:compile
+1729715980673:run roms/3-corax+.ch8
+1729716072862:run roms/4-flags.ch8
+1729717527678:run roms/5-quirks.ch8
+1729720357880:compile
+1729720360306:run roms/5-quirks.ch8
+1729720921833:compile
+1729720926599:run roms/5-quirks.ch8
+1729721002749:compile
+1729721005387:run roms/5-quirks.ch8
+1729721669538:run roms/6-keypad.ch8
+1729721869240:OA
+1729721871193:run roms/6-keypad.ch8
+1729721990381:run roms/5-quirks.ch8
+1729722285990:run roms/7-beep.ch8
+1729722828895:compile
+1729722831208:run roms/7-beep.ch8
+1729722922358:run roms/5-quirks.ch8
+1729723471887:run roms/3-corax+.ch8
