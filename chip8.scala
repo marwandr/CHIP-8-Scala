@@ -30,10 +30,12 @@ object Chip8Emulator {
 
   var running = true
   var soundPlaying = false
+  var breakOut = false
   val shifting = false
   val clipping = true
   val reset = true
   val memory = true
+  val displayWait = true
 
   // Load the font set into memory
   for (i <- 0 until FontSet.fontSet.length) {
@@ -212,7 +214,8 @@ object Chip8Emulator {
         val posX = context.registers(x) & 0xff
         val posY = context.registers(y) & 0xff
         val height = n
-        drawSprite(posX, posY, height)
+        drawSprite(posX % SCREEN_WIDTH, posY % SCREEN_HEIGHT, height)
+        breakOut = true
         nextInstruction()
 
       case 0xe => //  Skip next instruction if key with the value of Vx is not pressed.
@@ -314,7 +317,7 @@ object Chip8Emulator {
       for (col <- 0 until 8) {
         val (posX, posY) =
           if (clipping) (x + col, y + row)
-          else (x + col % SCREEN_WIDTH, y + row % SCREEN_HEIGHT)
+          else ((x + col) % SCREEN_WIDTH, (y + row) % SCREEN_HEIGHT)
         val withinBounds =
           posX < SCREEN_WIDTH && posY < SCREEN_HEIGHT && posX >= 0 && posY >= 0
         val pixelSet = (sprite & (0x80 >> col)) != 0
@@ -397,16 +400,25 @@ object Chip8Emulator {
 
   def mainLoop(): Unit = {
     println("entering main loop")
-    val frameDuration = 100000000 / 60 // 60Hz for 60 frames per second
-    while (running) {
-      val startTime = System.nanoTime()
-      executeInstr()
-      updateTimers()
+    val frameDuration = 1000000000 / 60 // 60Hz for 60 frames per second
+    val instructionsPerFrame = 11
 
+    while (running) {
+      var i = 0
+      val startTime = System.nanoTime()
+
+      while ((!breakOut || !displayWait) && i < instructionsPerFrame) {
+        executeInstr()
+        i += 1
+      }
+      breakOut = false
+
+      updateTimers()
       val elapsed = System.nanoTime() - startTime
       val sleepTime = Math.max(0, (frameDuration - elapsed) / 1000000)
       Thread.sleep(sleepTime)
     }
+
     println("Game exited")
   }
 
