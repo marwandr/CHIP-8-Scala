@@ -3043,3 +3043,4 @@ Caused by: java.nio.channels.AsynchronousCloseException
 2024.10.24 10:39:45 INFO  compiling chip8 (4 scala sources)
 2024.10.24 10:39:45 INFO  time: compiled chip8 in 0.14s
 2024.10.24 10:39:45 WARN  Could not load snapshot text for /home/marwandr/Uni/chip8/chip8.scala
+2024.10.24 10:40:44 WARN  Could not load snapshot text for /home/marwandr/Uni/chip8/chip8.scala
