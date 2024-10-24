@@ -1,75 +1,51 @@
 [0m[[0m[0mdebug[0m] [0m[0m[zinc] IncrementalCompile -----------[0m
 [0m[[0m[0mdebug[0m] [0m[0mIncrementalCompile.incrementalCompile[0m
-[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 15 products, 1 sources, 2 libraries[0m
-[0m[[0m[0mdebug[0m] [0m[0mcurrent source = Set(${BASE}/Chip8EmulatorGUI.scala, ${BASE}/sound.scala, ${BASE}/chip8.scala, ${BASE}/FontSet.scala, ${BASE}/chipContext.scala)[0m
-[0m[[0m[0mdebug[0m] [0m[0m> initialChanges = InitialChanges(Changes(added = Set(${BASE}/FontSet.scala, ${BASE}/sound.scala, ${BASE}/chipContext.scala, ${BASE}/Chip8EmulatorGUI.scala), removed = Set(), changed = Set(${BASE}/chip8.scala), unmodified = ...),Set(),Set(),API Changes: Set())[0m
+[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 15 products, 5 sources, 2 libraries[0m
+[0m[[0m[0mdebug[0m] [0m[0mcurrent source = Set(${BASE}/Chip8EmulatorGUI.scala, ${BASE}/Sound.scala, ${BASE}/chip8.scala, ${BASE}/FontSet.scala, ${BASE}/chipContext.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(${BASE}/chip8.scala), unmodified = ...),Set(),Set(),API Changes: Set())[0m
 [0m[[0m[0mdebug[0m] [0m[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0mInitial source changes:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	removed: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0m	added: Set(${BASE}/FontSet.scala, ${BASE}/sound.scala, ${BASE}/chipContext.scala, ${BASE}/Chip8EmulatorGUI.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	added: Set()[0m
 [0m[[0m[0mdebug[0m] [0m[0m	modified: Set(${BASE}/chip8.scala)[0m
 [0m[[0m[0mdebug[0m] [0m[0mInvalidated products: Set()[0m
 [0m[[0m[0mdebug[0m] [0m[0mExternal API changes: API Changes: Set()[0m
 [0m[[0m[0mdebug[0m] [0m[0mModified binary dependencies: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0mInitial directly invalidated classes: Set(chip8.DataStruct, chip8.Register, chip8.chipContext, chip8.Memory, chip8.FontSet, chip8.Sound, chip8.Chip8Emulator, chip8.Stack, chip8.Chip8EmulatorGUI)[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial directly invalidated classes: Set(chip8.Chip8Emulator, chip8.Chip8EmulatorGUI)[0m
 [0m[[0m[0mdebug[0m] [0m[0mSources indirectly invalidated by:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	product: Set()[0m
 [0m[[0m[0mdebug[0m] [0m[0m	binary dep: Set()[0m
 [0m[[0m[0mdebug[0m] [0m[0m	external source: Set()[0m
-[0m[[0m[0mdebug[0m] [0m[0mall 5 sources are invalidated[0m
-[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: chip8.DataStruct, chip8.Register, chip8.chipContext, chip8.Memory, chip8.FontSet, chip8.Sound, chip8.Chip8Emulator, chip8.Stack, chip8.Chip8EmulatorGUI[0m
-[0m[[0m[0mdebug[0m] [0m[0mIncluding chip8.Register by chip8.DataStruct[0m
-[0m[[0m[0mdebug[0m] [0m[0mIncluding chip8.Memory by chip8.DataStruct[0m
-[0m[[0m[0mdebug[0m] [0m[0mIncluding chip8.Stack by chip8.DataStruct[0m
-[0m[[0m[0mdebug[0m] [0m[0mRecompiling all sources: number of invalidated sources > 50.0 percent of all sources[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated classes: Set(chip8.Chip8Emulator, chip8.Chip8EmulatorGUI)[0m
+[0m[[0m[0mdebug[0m] [0m[0mAll initially invalidated sources:Set(${BASE}/chip8.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: chip8.Chip8Emulator, chip8.Chip8EmulatorGUI[0m
 [0m[[0m[0mdebug[0m] [0m[0mcompilation cycle 1[0m
-[0m[[0m[0minfo[0m] [0m[0mcompiling 5 Scala sources to /home/marwandr/Uni/chip8/target/scala-2.12/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 2 Scala sources to /home/marwandr/Uni/chip8/target/scala-2.12/classes ...[0m
 [0m[[0m[0mdebug[0m] [0m[0mGetting org.scala-sbt:compiler-bridge_2.12:1.10.2:compile for Scala 2.12.19[0m
-[0m[[0m[0minfo[0m] [0m[0mNon-compiled module 'compiler-bridge_2.12' for Scala 2.12.19. Compiling...[0m
-[0m[[0m[0mdebug[0m] [0m[0mCreating plain compiler interface for 2.12.19.[0m
-[0m[[0m[0mdebug[0m] [0m[0m  > Arguments: [0m
-[0m[[0m[0mdebug[0m] [0m[0m	-d[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_3447093d[0m
-[0m[[0m[0mdebug[0m] [0m[0m	-nowarn[0m
-[0m[[0m[0mdebug[0m] [0m[0m	-bootclasspath[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/home/marwandr/.sbt/boot/scala-2.12.19/lib/scala-library.jar[0m
-[0m[[0m[0mdebug[0m] [0m[0m	-classpath[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/compiler-interface/1.10.2/compiler-interface-1.10.2.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-interface/1.10.1/util-interface-1.10.1.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/compiler-bridge_2.12/1.10.2/compiler-bridge_2.12-1.10.2-sources.jar:/home/marwandr/.sbt/boot/scala-2.12.19/lib/scala-reflect.jar:/home/marwandr/.sbt/boot/scala-2.12.19/lib/scala-xml_2.12-2.2.0.jar:/home/marwandr/.sbt/boot/scala-2.12.19/lib/scala-compiler.jar[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/scala/ZincCompat.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/scala/reflect/ReflectAccess.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/API.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/AbstractZincFile.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/Analyzer.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/CallbackGlobal.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/ClassName.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/Compat.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/CompilerBridge.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/ConsoleBridge.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/DelegatingReporter.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/Dependency.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/ExtractAPI.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/ExtractUsedNames.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/GlobalHelpers.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/InteractiveConsoleBridge.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/InteractiveConsoleFactoryBridge.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/InteractiveConsoleHelper.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/InteractiveConsoleResponse.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/JarUtils.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/JavaUtils.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/LocalToNonLocalClass.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/LocateClassFile.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/Log.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/Message.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/PlainNioFile.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/ScaladocBridge.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m	/tmp/sbt_cb7313c9/xsbt/trace.scala[0m
-[0m[[0m[0mdebug[0m] [0m[0m      [0m
-[0m[[0m[0minfo[0m] [0m[0m  Compilation completed in 9.868s.[0m
-[0m[[0m[0mdebug[0m] [0m[0m[zinc] Running cached compiler 576a03d6 for Scala compiler version 2.12.19[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] Running cached compiler 4c9c6813 for Scala compiler version 2.12.19[0m
 [0m[[0m[0mdebug[0m] [0m[0m[zinc] The Scala compiler is invoked with:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	-bootclasspath[0m
 [0m[[0m[0mdebug[0m] [0m[0m	/home/marwandr/.sbt/boot/scala-2.12.19/lib/scala-library.jar[0m
 [0m[[0m[0mdebug[0m] [0m[0m	-classpath[0m
 [0m[[0m[0mdebug[0m] [0m[0m	/home/marwandr/Uni/chip8/target/scala-2.12/classes:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/processing/core/3.3.7/core-3.3.7.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt-main/2.3.2/gluegen-rt-main-2.3.2.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl/2.3.2/jogl-2.3.2.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all-main/2.3.2/jogl-all-main-2.3.2.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt-main/2.3.2/newt-main-2.3.2.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow-main/2.3.2/nativewindow-main-2.3.2.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-android-aarch64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-android-armv6.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-linux-amd64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-linux-armv6.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-linux-armv6hf.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-linux-i586.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-macosx-universal.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-solaris-amd64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-solaris-i586.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-windows-amd64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/gluegen/gluegen-rt/2.3.2/gluegen-rt-2.3.2-natives-windows-i586.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-android-aarch64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-android-armv6.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-linux-amd64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-linux-armv6.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-linux-armv6hf.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-linux-i586.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-macosx-universal.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-solaris-amd64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-solaris-i586.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-windows-amd64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/jogl-all/2.3.2/jogl-all-2.3.2-natives-windows-i586.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-event.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-ogl.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-android.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-bcm-old.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-bcm-vc.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-intelgdl.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-kd.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-linux.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-osx.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-win.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-driver-x11.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-android-aarch64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-android-armv6.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-linux-amd64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-linux-armv6.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-linux-armv6hf.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-linux-i586.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-macosx-universal.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-solaris-amd64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-solaris-i586.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-windows-amd64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/newt/2.3.2/newt-2.3.2-natives-windows-i586.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-os-win.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-os-osx.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-os-x11.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-android-aarch64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-android-armv6.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-linux-amd64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-linux-armv6.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-linux-armv6hf.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-linux-i586.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-macosx-universal.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-solaris-amd64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-solaris-i586.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-windows-amd64.jar:/home/marwandr/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jogamp/jogl/nativewindow/2.3.2/nativewindow-2.3.2-natives-windows-i586.jar[0m
-[0m[[0m[0mdebug[0m] [0m[0mScala compilation took 13.002120519 s[0m
+[0m[[0m[0mdebug[0m] [0m[0mScala compilation took 2.722540591 s[0m
 [0m[[0m[0mdebug[0m] [0m[0mdone compiling[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidating (transitively) by inheritance from chip8.Chip8Emulator...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: chip8.Chip8Emulator[0m
+[0m[[0m[0mdebug[0m] [0m[0mInvalidated by transitive inheritance dependency: Set(chip8.Chip8Emulator)[0m
+[0m[[0m[0mdebug[0m] [0m[0mNone of the modified names appears in source file of chip8.Chip8EmulatorGUI. This dependency is not being considered for invalidation.[0m
+[0m[[0m[0mdebug[0m] [0m[0mChange NamesChange(chip8.Chip8Emulator,ModifiedNames(changes = UsedName(handleFInstructions,[Default]), UsedName(execute8XYN,[Default]))) invalidates 1 classes due to The chip8.Chip8Emulator has the following regular definitions changed:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	UsedName(handleFInstructions,[Default]), UsedName(execute8XYN,[Default]).[0m
+[0m[[0m[0mdebug[0m] [0m[0m  > by transitive inheritance: Set(chip8.Chip8Emulator)[0m
+[0m[[0m[0mdebug[0m] [0m[0m  > [0m
+[0m[[0m[0mdebug[0m] [0m[0m  > [0m
+[0m[[0m[0mdebug[0m] [0m[0m  > [0m
+[0m[[0m[0mdebug[0m] [0m[0m        [0m
+[0m[[0m[0mdebug[0m] [0m[0mNew invalidations:[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: [0m
+[0m[[0m[0mdebug[0m] [0m[0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0m[0mdebug[0m] [0m[0mFinal step, transitive dependencies:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Set()[0m
+[0m[[0m[0mdebug[0m] [0m[0mInitial set of included nodes: chip8.Chip8Emulator, chip8.Chip8EmulatorGUI[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncluding chip8.Chip8EmulatorGUI by chip8.Chip8Emulator[0m
+[0m[[0m[0mdebug[0m] [0m[0mNo classes were invalidated.[0m

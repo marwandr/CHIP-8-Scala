@@ -86,3 +86,5 @@
 1729722831208:run roms/7-beep.ch8
 1729722922358:run roms/5-quirks.ch8
 1729723471887:run roms/3-corax+.ch8
+1729724485061:compile
+1729737437178:run roms/3-corax+.ch8

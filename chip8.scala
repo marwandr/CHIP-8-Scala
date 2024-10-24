@@ -3,19 +3,19 @@ package chip8
 import processing.core.PApplet
 import java.nio.file.Files
 import java.nio.file.Paths
+import scala.concurrent.Future
+import scala.util.Try
 import java.util.concurrent.Executors
 import scala.concurrent.ExecutionContext
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
-import scala.concurrent.duration._
-import scala.util.Try
 
 object Chip8Emulator {
   val SCREEN_WIDTH = 64
   val SCREEN_HEIGHT = 32
-  val MEMORY_SIZE = 4096 // Memory size for CHIP-8 is 4096 bytes
+  val MEMORY_SIZE = 4096
 
-  val keyStates = Array.fill(16)(false) // 16 keys for CHIP-8
+  val keyStates = Array.fill(16)(false)
   var context: chipContext = new chipContext(
     memory = Array.fill(MEMORY_SIZE)(0),
     registers = Array.fill(16)(0),
@@ -40,36 +40,26 @@ object Chip8Emulator {
     context.memory(0x50 + i) = FontSet.fontSet(i)
   }
 
-  def loadRom(filePath: String, context: chipContext): Unit = {
+  def loadRom(filePath: String): Unit = {
     val romBytes = Try(Files.readAllBytes(Paths.get(filePath))) match {
-      case scala.util.Success(bytes) =>
-        if (bytes.length + 0x200 > context.memory.length) {
-          println(
-            s"Error: ROM size (${bytes.length}) exceeds available memory."
-          )
-          sys.exit(1)
-        }
-        bytes
+      case scala.util.Success(bytes) if bytes.length + 0x200 <= context.memory.length =>
+        System.arraycopy(bytes, 0, context.memory, 0x200, bytes.length)
+      case scala.util.Success(_) =>
+        println("Error: ROM size exceeds available memory.")
+        sys.exit(1)
       case scala.util.Failure(e) =>
         println(s"Error loading ROM: ${e.getMessage}")
         sys.exit(1)
     }
-
-    System.arraycopy(romBytes, 0, context.memory, 0x200, romBytes.length)
   }
 
   def executeInstr(): Unit = {
-    val highByte = context.memory(context.PC)
-    val lowByte = context.memory(context.PC + 1)
-    val rawInstr = ((highByte & 0xff) << 8) | (lowByte & 0xff)
-    val instr = (rawInstr & 0xffff).toShort
+    val instr = (((context.memory(context.PC) & 0xff) << 8) | (context.memory(context.PC + 1) & 0xff) & 0xffff).toShort
     val instrType = (instr & 0xf000) >> 12
 
     val x = (instr & 0x0f00) >> 8 // Get X register number
     val y = (instr & 0x00f0) >> 4 // Get Y register number
     val n = instr & 0x000f // Get N value
-
-    // println(f"Executing instruction: ${instr}%04x")
 
     instrType match {
       case 0x0 =>
@@ -428,7 +418,7 @@ object Chip8Emulator {
     }
 
     // Load the ROM
-    loadRom(args(0), context)
+    loadRom(args(0))
     println("ROM loaded")
 
     val emulatorExecutionContext =

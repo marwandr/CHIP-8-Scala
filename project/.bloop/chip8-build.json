@@ -214,7 +214,7 @@
         "platform": {
             "name": "jvm",
             "config": {
-                "home": "/usr/lib/jvm/java-17-openjdk-amd64",
+                "home": "/home/marwandr/.config/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/21",
                 "options": [
                     "-Duser.dir=/home/marwandr/Uni/chip8/project"
                 ]
@@ -223,7 +223,7 @@
                 
             ],
             "runtimeConfig": {
-                "home": "/usr/lib/jvm/java-17-openjdk-amd64",
+                "home": "/home/marwandr/.config/Code/User/globalStorage/pleiades.java-extension-pack-jdk/java/21",
                 "options": [
                     "-Duser.dir=/home/marwandr/Uni/chip8/project"
                 ]
