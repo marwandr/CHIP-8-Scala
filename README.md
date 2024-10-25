@@ -9,6 +9,7 @@ This project implements the CHIP-8 architecture, providing an environment for ex
 - [System Requirements](#system-requirements)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Where to find ROMs](#where-to-find-roms)
 - [Potential Enhancements](#potential-enhancements)
 - [License](#license)
 
@@ -62,6 +63,14 @@ This project implements the CHIP-8 architecture, providing an environment for ex
    ./gradlew run args=path/to/rom.ch8
    ```
 2. Load a CHIP-8 ROM by inlcuding its relative file path in the args. Otherwise the emulator won't be able to run.
+
+
+## Where to Find ROMs
+
+There's a beautiful archive where you can download all kinds of CHIP-8 ROMs on this GitHub: [CHIP-8 Archive](https://johnearnest.github.io/chip8Archive/).
+
+You can also test the emulator with some test ROMs. An interesting test suite you might want to try out can be found here: [CHIP-8 Test Suite](https://github.com/Timendus/chip8-test-suite).
+
 
 ## Potential Enhancements
 
