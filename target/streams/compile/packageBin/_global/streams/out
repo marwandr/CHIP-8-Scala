@@ -26,10 +26,14 @@
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/marwandr/Uni/chip8/target/scala-2.12/classes/chip8/FontSet$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	chip8/DataStruct.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/marwandr/Uni/chip8/target/scala-2.12/classes/chip8/DataStruct.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	chip8/Settings.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/marwandr/Uni/chip8/target/scala-2.12/classes/chip8/Settings.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	chip8/Sound$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/marwandr/Uni/chip8/target/scala-2.12/classes/chip8/Sound$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	chip8/Sound.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/marwandr/Uni/chip8/target/scala-2.12/classes/chip8/Sound.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	chip8/Settings$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/marwandr/Uni/chip8/target/scala-2.12/classes/chip8/Settings$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	chip8/Register.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  /home/marwandr/Uni/chip8/target/scala-2.12/classes/chip8/Register.class[0m
 [0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

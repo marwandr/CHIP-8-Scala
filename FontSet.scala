@@ -1,5 +1,4 @@
 package chip8
-
 object FontSet {
   val fontSet: Array[Byte] = Array(
     0xf0, 0x90, 0x90, 0x90, 0xf0, // 0

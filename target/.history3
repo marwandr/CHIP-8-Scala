@@ -91,3 +91,25 @@
 1729758106808:run roms/5-quirks.ch8
 1729758517049:compile
 1729758523068:run roms/5-quirks.ch8
+1729770880558:run roms/3-corax+.ch8
+1729770950067:run roms/br8kout.ch8
+1729770982222:run roms/5-quirks.ch8
+1729777424814:run roms/br8kout.ch8
+1729777490280:compile
+1729777499992:compie
+1729777501464:compile
+1729777505002:compie
+1729777507631:run roms/br8kout.ch8
+1729810775316:compile
+1729810777117:run roms/br8kout.ch8
+1729811122153:run roms/3-corax+.ch8
+1729811818484:run roms/4-flags.ch8
+1729811897547:run roms/3-corax+.ch8
+1729813044839:run roms/br8kout.ch8
+1729814090130:compile
+1729814094748:run roms/3-corax+.ch8
+1729814108205:run roms/br8kout.ch8
+1729814123847:run roms/4-flags.ch8
+1729814295629:run roms/3-corax+.ch8
+1729814323413:compile
+1729814343980:run roms/3-corax+.ch8

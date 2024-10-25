@@ -14,7 +14,10 @@ class chipContext(
     val SP: Int,
     val DT: Int,
     val ST: Int,
-    val framebuffer: Array[Byte]
+    val framebuffer: Array[Byte],
+    val running: Boolean,
+    val soundPlaying: Boolean,
+    val breakOut: Boolean
 ) {
   def copy(
       memory: Array[Byte] = this.memory,
@@ -25,7 +28,10 @@ class chipContext(
       SP: Int = this.SP,
       DT: Int = this.DT,
       ST: Int = this.ST,
-      frameBuffer: Array[Byte] = this.framebuffer
+      frameBuffer: Array[Byte] = this.framebuffer,
+      running: Boolean = this.running,
+      soundPlaying: Boolean = this.soundPlaying,
+      breakOut: Boolean = this.breakOut
   ): chipContext = {
     new chipContext(
       memory = memory,
@@ -36,7 +42,10 @@ class chipContext(
       SP = SP,
       DT = DT,
       ST = ST,
-      framebuffer = framebuffer
+      framebuffer = framebuffer,
+      running = running,
+      soundPlaying = soundPlaying,
+      breakOut = breakOut
     )
   }
 
