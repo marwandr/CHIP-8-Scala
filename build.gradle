@@ -1,0 +1,29 @@
+plugins {
+    id 'scala'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.scala-lang:scala-library:2.12.19'
+    implementation 'org.processing:core:3.3.7'
+}
+
+tasks.withType(ScalaCompile) {
+    scalaCompileOptions.additionalParameters = ['-deprecation', '-feature']
+}
+
+application {
+    mainClass = 'chip8.Chip8Emulator'
+}
+
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src']
+        }
+    }
+}
