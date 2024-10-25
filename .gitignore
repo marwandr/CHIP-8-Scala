@@ -1,0 +1,18 @@
+# Ignore Gradle files
+.gradle/
+build/
+gradle/
+gradlew
+gradlew.bat
+
+# Ignore IDE files
+.bloop/
+.metals/
+
+# Ignore ROMs
+roms/
+
+# Ignore build artifacts
+*.class
+*.jar
+*.war

@@ -9,7 +9,7 @@ object Sound {
     val amplitude = 0.5 * 127
 
     for (i <- 0 until bufferSize) {
-      buffer(i) = 
+      buffer(i) =
         (amplitude * Math.sin(2.0 * Math.PI * frequency * (i / sampleRate.toDouble))).toByte
     }
 
