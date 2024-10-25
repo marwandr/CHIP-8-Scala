@@ -8,12 +8,14 @@ import java.util.concurrent.Executors
 import scala.concurrent.ExecutionContext
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
+import scala.concurrent.Promise
 import scala.util.Try
 
 object Chip8Emulator {
   val SCREEN_WIDTH = 64
   val SCREEN_HEIGHT = 32
   val MEMORY_SIZE = 4096
+  val romLoadedPromise = Promise[Unit]() // Promise to signal ROM load
 
   val keyStates = Array.fill(16)(false)
   var context: chipContext = new chipContext(
@@ -46,6 +48,7 @@ object Chip8Emulator {
       case scala.util.Success(bytes)
           if bytes.length + 0x200 <= context.memory.length =>
         System.arraycopy(bytes, 0, context.memory, 0x200, bytes.length)
+        romLoadedPromise.trySuccess(())
       case scala.util.Success(_) =>
         println("Error: ROM size exceeds available memory.")
         sys.exit(1)
@@ -60,11 +63,11 @@ object Chip8Emulator {
       context.PC + 1
     ) & 0xff) & 0xffff).toShort
     val instrType = (instr & 0xf000) >> 12
-    def resetFlag(): Unit = if (settings.reset) context = context.update(15, 0, Register)
 
     val x = (instr & 0x0f00) >> 8 // Get X register number
     val y = (instr & 0x00f0) >> 4 // Get Y register number
-    val n = instr & 0x000f // Get N value
+    val kk = instr & 0x00ff
+    val n = instr & 0x000f
 
     instrType match {
       case 0x0 =>
@@ -101,51 +104,9 @@ object Chip8Emulator {
           case 0x7 => context = context.update(x, sum, Register)   // Add NN to Vx
         }
       case 0x8 => // Handle 0x8XYN instructions
-        val vx = context.registers(x)
-        val vy = context.registers(y)
-        n match {
-          case 0x0 => // Set Vx = Vy
-            context = context.update(x, vy, Register)
-          case 0x1 => // Set Vx = Vx OR Vy
-            val or = vx| vy
-            context = context.update(x, or, Register); resetFlag()
-          case 0x2 => // Set Vx = Vx AND Vy
-            val and = vx & vy
-            context = context.update(x, and, Register); resetFlag()
-          case 0x3 => // Set Vx = Vx XOR Vy
-            val xor = vx ^ vy
-            context = context.update(x, xor, Register); resetFlag()
-          case 0x4 => // Set Vx = Vx + Vy, set VF = carry
-            val sum = (vx & 0xff) + (vy & 0xff)
-            val flag = if (sum > 0xff) 1 else 0
-            context = context.update(x, sum & 0xff, Register).update(15, flag, Register)
-          case 0x5 => // Set Vx = Vx - Vy, set VF = NOT borrow
-            val borrow = if (vx >= vy) 1 else 0
-            val result = ((vx - vy) & 0xff)
-            context = context.update(x, result, Register).update(15, borrow, Register)
-          case 0x6 => // Set Vx = Vx SHR 1, set VF = LSB
-            val lsb = vy & 0x1
-            val res = (vy >> 1) & 0xff
-            context = context.update(x, res, Register).update(15, lsb, Register)
-          case 0x7 => // Set Vx = Vy - Vx, set VF = NOT borrow
-            val borrow = if (vy >= vx) 1 else 0
-            val result = (vy - vx) & 0xff
-            context = context.update(x, result, Register).update(15, borrow, Register)
-          case 0xe => // Set Vx = Vx (or Vy) SHL 1, set VF = MSB
-            val (result, msb) = if (settings.shifting) {
-              val msb = (vx >> 7) & 0x1
-              val result = (vx << 1) & 0xff
-              (result, msb) } else {
-              val msb = (vy >> 7) & 0x1
-              val result = (vy << 1) & 0xff
-              (result, msb)
-            }
-            context = context.update(x, result, Register).update(15, msb, Register)
-        }
+        handle8XYN(x, y, n)
       case 0x9 => // Skip next instruction if Vx != Vy.
-        if ((context.registers(x) & 0xff) != (context.registers(y) & 0xff)) {
-          nextInstruction()
-        }
+        if ((context.registers(x) & 0xff) != (context.registers(y) & 0xff)) nextInstruction()
       case 0xa => // Set I
         context = context.copy(I = (instr & 0x0fff).toShort)
       case 0xb => // Jump to location nnn + V0.
@@ -154,55 +115,105 @@ object Chip8Emulator {
         return
       case 0xc => // Set Vx = random byte AND kk
         val random = scala.util.Random.nextInt(256)
-        context.registers(x) = (random & (instr & 0x00ff))
+        context.registers(x) = (random & kk)
       case 0xd => // Draw sprite at (Vx, Vy) with a width of 8 pixels and a height of size N
         val posX = context.registers(x) & 0xff
         val posY = context.registers(y) & 0xff
         val height = n
         drawSprite(posX % SCREEN_WIDTH, posY % SCREEN_HEIGHT, height)
         context = context.copy(breakOut = true)
-      case 0xe => //  Skip next instruction if key with the value of Vx is not pressed.
-        (instr & 0x00ff) match {
+      case 0xe =>
+        kk match {
           case 0x9e =>
-            if (keyStates(context.registers(x))) nextInstruction()
+            if (keyStates(context.registers(x))) nextInstruction()  // Skip next instruction if key with the value of Vx is pressed.
           case 0xa1 =>
-            if (!keyStates(context.registers(x))) nextInstruction()
+            if (!keyStates(context.registers(x))) nextInstruction() // Skip next instruction if key with the value of Vx is not pressed.
         }
       case 0xf =>
-        (instr & 0x00ff) match {
-          case 0x07 => // Set Vx = delay timer value
-            context = context.update(x, context.DT, Register)
-          case 0x0a => // Wait for a key press, store the value of the key in Vx
-            val keyPressed = keyStates.indexWhere(identity)
-            if (keyPressed >= 0) context = context.update(x, keyPressed, Register) else return
-          case 0x15 => // Set delay timer = Vx
-            context = context.copy(DT = context.registers(x))
-          case 0x18 => // Set sound timer = Vx
-            context = context.copy(ST = context.registers(x))
-          case 0x1e => // Set I = I + Vx
-            context = context.copy(I = (context.I + context.registers(x)).toShort)
-          case 0x29 => // Set I = location of sprite for digit Vx
-            context = context.copy(I = (0x50 + context.registers(x) * 5).toShort)
-          case 0x33 => // Store BCD representation of Vx in memory locations I, I+1, and I+2
-            val value = context.registers(x) & 0xff
-            context = context
-              .update(context.I, (value / 100), Memory)
-              .update(context.I + 1, ((value / 10) % 10), Memory)
-              .update(context.I + 2, (value % 10), Memory)
-          case 0x55 => // Store registers V0 through Vx in memory starting at location I
-            (0 to Math.min(x, 15)).foreach(i =>
-              context = context.update(context.I + i, context.registers(i) & 0xff, Memory)
-              )
-            if (settings.memory) context = context.copy(I = (context.I + x + 1).toShort)
-
-          case 0x65 => // Read registers V0 through Vx from memory starting at location I
-            (0 to Math.min(x, 15)).foreach(i =>
-              context = context.update(i, context.memory(context.I + i) & 0xff, Register)
-            )
-            if (settings.memory) context = context.copy(I = (context.I + x + 1).toShort)
-        }
+        handleF(x, y, kk)
     }
     nextInstruction()
+  }
+
+  def handle8XYN(x: Int, y: Int, n: Int): Unit = {
+    val vx = context.registers(x)
+    val vy = context.registers(y)
+    def resetFlag(): Unit = if (settings.reset) context = context.update(15, 0, Register)
+
+    n match {
+      case 0x0 => // Set Vx = Vy
+        context = context.update(x, vy, Register)
+      case 0x1 => // Set Vx = Vx OR Vy
+        val or = vx| vy
+        context = context.update(x, or, Register); resetFlag()
+      case 0x2 => // Set Vx = Vx AND Vy
+        val and = vx & vy
+        context = context.update(x, and, Register); resetFlag()
+      case 0x3 => // Set Vx = Vx XOR Vy
+        val xor = vx ^ vy
+        context = context.update(x, xor, Register); resetFlag()
+      case 0x4 => // Set Vx = Vx + Vy, set VF = carry
+        val sum = (vx & 0xff) + (vy & 0xff)
+        val flag = if (sum > 0xff) 1 else 0
+        context = context.update(x, sum & 0xff, Register).update(15, flag, Register)
+      case 0x5 => // Set Vx = Vx - Vy, set VF = NOT borrow
+        val borrow = if (vx >= vy) 1 else 0
+        val result = ((vx - vy) & 0xff)
+        context = context.update(x, result, Register).update(15, borrow, Register)
+      case 0x6 => // Set Vx = Vx SHR 1, set VF = LSB
+        val lsb = vy & 0x1
+        val res = (vy >> 1) & 0xff
+        context = context.update(x, res, Register).update(15, lsb, Register)
+      case 0x7 => // Set Vx = Vy - Vx, set VF = NOT borrow
+        val borrow = if (vy >= vx) 1 else 0
+        val result = (vy - vx) & 0xff
+        context = context.update(x, result, Register).update(15, borrow, Register)
+      case 0xe => // Set Vx = Vx (or Vy) SHL 1, set VF = MSB
+        val (result, msb) = if (settings.shifting) {
+          val msb = (vx >> 7) & 0x1
+          val result = (vx << 1) & 0xff
+          (result, msb) } else {
+          val msb = (vy >> 7) & 0x1
+          val result = (vy << 1) & 0xff
+          (result, msb)
+        }
+        context = context.update(x, result, Register).update(15, msb, Register)
+    }
+  }
+
+  def handleF(x: Int, y: Int, kk: Int): Unit = {
+    kk match {
+      case 0x07 => // Set Vx = delay timer value
+        context = context.update(x, context.DT, Register)
+      case 0x0a => // Wait for a key press, store the value of the key in Vx
+        val keyPressed = keyStates.indexWhere(identity)
+        if (keyPressed >= 0) context = context.update(x, keyPressed, Register) else return
+      case 0x15 => // Set delay timer = Vx
+        context = context.copy(DT = context.registers(x))
+      case 0x18 => // Set sound timer = Vx
+        context = context.copy(ST = context.registers(x))
+      case 0x1e => // Set I = I + Vx
+        context = context.copy(I = (context.I + context.registers(x)).toShort)
+      case 0x29 => // Set I = location of sprite for digit Vx
+        context = context.copy(I = (0x50 + context.registers(x) * 5).toShort)
+      case 0x33 => // Store BCD representation of Vx in memory locations I, I+1, and I+2
+        val value = context.registers(x) & 0xff
+        context = context
+          .update(context.I, (value / 100), Memory)
+          .update(context.I + 1, ((value / 10) % 10), Memory)
+          .update(context.I + 2, (value % 10), Memory)
+      case 0x55 => // Store registers V0 through Vx in memory starting at location I
+        (0 to Math.min(x, 15)).foreach(i =>
+          context = context.update(context.I + i, context.registers(i) & 0xff, Memory)
+          )
+        if (settings.memory) context = context.copy(I = (context.I + x + 1).toShort)
+
+      case 0x65 => // Read registers V0 through Vx from memory starting at location I
+        (0 to Math.min(x, 15)).foreach(i =>
+          context = context.update(i, context.memory(context.I + i) & 0xff, Register)
+        )
+        if (settings.memory) context = context.copy(I = (context.I + x + 1).toShort)
+    }
   }
 
   def drawSprite(x: Int, y: Int, height: Int): Unit = {
@@ -231,6 +242,10 @@ object Chip8Emulator {
     }
   }
 
+  def nextInstruction(): Unit = {
+    context = context.copy(PC = (context.PC + 2).toShort)
+  }
+
   def keyConversion(key: Int): Int = {
     key match {
       case '1' =>  1  // CHIP-8 key 1
@@ -256,10 +271,6 @@ object Chip8Emulator {
   def handleKey(keyCode: Int, Press: Boolean): Unit = {
     val key = keyConversion(keyCode)
     if (key != -1) keyStates(key) = Press
-  }
-
-  def nextInstruction(): Unit = {
-    context = context.copy(PC = (context.PC + 2).toShort)
   }
 
   def updateTimers(): Unit = {
@@ -301,21 +312,15 @@ object Chip8Emulator {
 
   // Main method (entry point)
   def main(args: Array[String]): Unit = {
-    if (args.length < 1) {
-      println("Please provide a ROM file path.")
-      sys.exit(1)
-    }
-
-    loadRom(args(0))
-
-    val emulatorExecutionContext = ExecutionContext.fromExecutor(Executors.newSingleThreadExecutor())
-
-    // Start the main loop in a separate thread
-    Future {
-      mainLoop()
-    }(emulatorExecutionContext)
-
     // Launch the GUI
     PApplet.runSketch(Array("chip8.Chip8EmulatorGUI"), new Chip8EmulatorGUI)
+
+    // Use the Promise to delay main loop until ROM is loaded
+    val emulatorExecutionContext = ExecutionContext.fromExecutor(Executors.newSingleThreadExecutor())
+    romLoadedPromise.future.foreach { _ =>
+      Future {
+        mainLoop()
+      }(emulatorExecutionContext)
+    }
   }
 }
