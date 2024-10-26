@@ -290,8 +290,8 @@ object Chip8Emulator {
   }
 
   def mainLoop(): Unit = {
-    val frameDuration = 1000000000 / 60
-    val instructionsPerFrame = 11
+    val frameDuration = 1000000000 / 100
+    val instructionsPerFrame = 60
 
     while (context.running) {
       var i = 0

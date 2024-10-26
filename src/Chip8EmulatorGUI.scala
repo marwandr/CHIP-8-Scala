@@ -88,4 +88,12 @@ class Chip8EmulatorGUI extends PApplet {
       }
     }
   }
+  
+  override def keyPressed(): Unit = {
+    Chip8Emulator.handleKey(keyCode, true)
+  }
+
+  override def keyReleased(): Unit = {
+    Chip8Emulator.handleKey(keyCode, false)
+  }
 }
