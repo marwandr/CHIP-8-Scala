@@ -85,6 +85,7 @@ object Chip8Emulator {
               SP = (context.SP - 1)
               )
           case i if (i & 0xf000) == 0x0000 => // SYS addr
+            println("SYS instruction not supported. Instruction: " + instr)
         }
       case 0x1 => // Jump to address NNN
         context = context.copy(PC = (instr & 0x0fff).toShort)
@@ -128,6 +129,7 @@ object Chip8Emulator {
         drawSprite(posX % SCREEN_WIDTH, posY % SCREEN_HEIGHT, height)
         context = context.copy(breakOut = true)
       case 0xe =>
+        print("E instruction: " + instr)
         kk match {
           case 0x9e =>
             if (keyStates(context.registers(x))) nextInstruction()  // Skip next instruction if key with the value of Vx is pressed.
@@ -334,7 +336,10 @@ object Chip8Emulator {
       if (!context.soundPlaying) {
         context = context.copy(soundPlaying = true)
         Future {
-          while (context.ST > 0) Sound.beep(440, 100)
+          Sound.beep(440, 100)
+
+          val remainingSoundTime = context.ST * 100
+          Thread.sleep(remainingSoundTime)
           context = context.copy(soundPlaying = false)
         }
       }
@@ -342,8 +347,8 @@ object Chip8Emulator {
   }
 
   def mainLoop(): Unit = {
-    val frameDuration = 1000000000 / 100
-    val instructionsPerFrame = 60
+    val frameDuration = 1000000000 / 60
+    val instructionsPerFrame = 16
 
     while (context.running) {
       while (pause) {

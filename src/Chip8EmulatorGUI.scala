@@ -28,7 +28,6 @@ class Chip8EmulatorGUI extends PApplet {
   }
 
   override def draw(): Unit = {
-    background(218, 165, 32)
     currentScreen match {
       case "emulator" => drawEmulatorScreen()
       case "menu" => drawMenuScreen()
@@ -74,6 +73,7 @@ class Chip8EmulatorGUI extends PApplet {
   }
 
   def drawMenuScreen(): Unit = {
+    background(218, 165, 32)
     fill(255)
     textAlign(CENTER, CENTER)
     textSize(25)
@@ -104,6 +104,7 @@ class Chip8EmulatorGUI extends PApplet {
   }
 
   def drawConfirmScreen(): Unit = {
+    background(218, 165, 32)
     fill(255)
     textAlign(CENTER, CENTER)
     textSize(20)
@@ -189,6 +190,7 @@ class Chip8EmulatorGUI extends PApplet {
   }
 
   def drawPixelsFromFramebuffer(): Unit = {
+    background(218, 165, 32)
     for (y <- 0 until Chip8Emulator.SCREEN_HEIGHT) {
       for (x <- 0 until Chip8Emulator.SCREEN_WIDTH) {
         if (
