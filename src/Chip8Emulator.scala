@@ -2,23 +2,21 @@ package chip8
 
 import processing.core.PApplet
 
-import java.nio.file.Files
-import java.nio.file.Paths
-import java.util.concurrent.Executors
-import scala.concurrent.ExecutionContext
+import java.io.{File, FileInputStream, FileOutputStream, ObjectInputStream, ObjectOutputStream}
+import java.nio.file.{Files, Paths}
+import scala.concurrent.{ExecutionContext, Future, Promise}
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
-import scala.concurrent.Promise
+import java.util.concurrent.Executors
 import scala.util.Try
 
 object Chip8Emulator {
   val SCREEN_WIDTH = 64
   val SCREEN_HEIGHT = 32
   val MEMORY_SIZE = 4096
-  val romLoadedPromise = Promise[Unit]() // Promise to signal ROM load
+  val romLoadedPromise = Promise[Unit]()
 
   val keyStates = Array.fill(16)(false)
-  var context: chipContext = new chipContext(
+  val defaultContext: chipContext = new chipContext(
     memory = Array.fill(MEMORY_SIZE)(0),
     registers = Array.fill(16)(0),
     stack = Array.fill(16)(0.toShort),
@@ -30,16 +28,16 @@ object Chip8Emulator {
     framebuffer = Array.fill(SCREEN_WIDTH * SCREEN_HEIGHT)(0),
     running = true,
     soundPlaying = false,
-    breakOut = false
+    breakOut = false,
+    gameName = ""
   )
+
+  var context = defaultContext
 
   // Edit the settings file to change the emulator settings
   // such as shifting, clipping, reset, memory, and displayWait
   // currently the settings are set to the default CHIP-8 settings
   var settings = Settings.initialize
-
-  // An array for the save states
-  var saveStates: Array(null)
 
   // Pauses the main loop if true
   @volatile var pause = false
@@ -55,6 +53,7 @@ object Chip8Emulator {
           if bytes.length + 0x200 <= context.memory.length =>
         System.arraycopy(bytes, 0, context.memory, 0x200, bytes.length)
         romLoadedPromise.trySuccess(())
+        context = context.copy(gameName = Paths.get(filePath).getFileName.toString)
       case scala.util.Success(_) =>
         println("Error: ROM size exceeds available memory.")
         sys.exit(1)
@@ -279,26 +278,51 @@ object Chip8Emulator {
     if (key != -1) keyStates(key) = Press
   }
 
+  def createSaveFile(slot: Int): Unit = {
+    // Define the directory and the file name
+    val saveDir = s"saves/${context.gameName}"
+    val saveFileName = s"save$slot"
+    
+    // Create the directory if it does not exist
+    val directoryPath = Paths.get(saveDir)
+    if (!Files.exists(directoryPath)) {
+      Files.createDirectories(directoryPath)
+    }
+    
+    // Create the save file
+    val saveFile = new ObjectOutputStream(new FileOutputStream(s"$saveDir/$saveFileName"))
+    saveFile.writeObject(context)
+    saveFile.close()
+  }
+
   def saveState(slot: Int, confirm: Boolean): Boolean = {
-    println(s"Saved state to slot $slot")
-    if (saveStates(slot) == null) {
-      saveStates(slot) = context.copy()
-      return true
+    val file = new File(s"saves/${context.gameName}/save$slot")
+    if (!file.exists() || confirm) {
+      createSaveFile(slot)
+      true
     }
-    else if (confirm) {
-      saveStates(slot) = context.copy()
-      return true
-    }
-    false
+    else false
   }
 
   def loadState(slot: Int): Boolean = {
-    println(s"Loaded state from slot $slot")
-    if (saveStates(slot) != null) {
-      context = saveStates(slot).copy()
-      return true
+    val file = new File(s"saves/${context.gameName}/save$slot")
+    
+    if (file.exists()) {
+      val saveFile = new ObjectInputStream(new FileInputStream(file))
+      try {
+        val loadedEmulator = saveFile.readObject().asInstanceOf[chipContext]
+        context = loadedEmulator
+        true
+      } catch {
+        case e: Exception =>
+          println(s"Error loading state: ${e.getMessage}")
+          true
+      } finally {
+        saveFile.close()
+      }
+    } else {
+      false
     }
-    false
   }
 
   def updateTimers(): Unit = {

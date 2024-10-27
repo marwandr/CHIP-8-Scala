@@ -1,11 +1,13 @@
 package chip8
 
+import java.io.Serializable
+
 sealed trait DataStruct
 case object Register extends DataStruct
 case object Stack extends DataStruct
 case object Memory extends DataStruct
 
-class chipContext(
+class chipContext (
     val memory: Array[Byte],
     val registers: Array[Integer],
     val stack: Array[Integer],
@@ -17,8 +19,9 @@ class chipContext(
     val framebuffer: Array[Byte],
     val running: Boolean,
     val soundPlaying: Boolean,
-    val breakOut: Boolean
-) {
+    val breakOut: Boolean,
+    val gameName: String
+) extends Serializable{
   def copy(
       memory: Array[Byte] = this.memory,
       registers: Array[Integer] = this.registers,
@@ -31,7 +34,8 @@ class chipContext(
       frameBuffer: Array[Byte] = this.framebuffer,
       running: Boolean = this.running,
       soundPlaying: Boolean = this.soundPlaying,
-      breakOut: Boolean = this.breakOut
+      breakOut: Boolean = this.breakOut,
+      gameName: String = this.gameName
   ): chipContext = {
     new chipContext(
       memory = memory,
@@ -45,7 +49,8 @@ class chipContext(
       framebuffer = framebuffer,
       running = running,
       soundPlaying = soundPlaying,
-      breakOut = breakOut
+      breakOut = breakOut,
+      gameName = gameName
     )
   }
 

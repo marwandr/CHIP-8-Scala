@@ -9,8 +9,9 @@ gradlew.bat
 .bloop/
 .metals/
 
-# Ignore ROMs
+# Ignore ROMs & Save files
 roms/
+saves/
 
 # Ignore build artifacts
 *.class

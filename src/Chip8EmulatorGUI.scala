@@ -1,11 +1,9 @@
 package chip8
-import processing.core.PApplet
-import processing.core.PConstants.BASELINE
-import processing.core.PConstants.CENTER
-import processing.core.PConstants.LEFT
 
-import javax.swing.JFileChooser
-import javax.swing.SwingUtilities
+import processing.core.PApplet
+import processing.core.PConstants.{CENTER, LEFT, BASELINE}
+
+import javax.swing.{JFileChooser, SwingUtilities}
 
 class Chip8EmulatorGUI extends PApplet {
   private val buttonWidth = 200
@@ -26,10 +24,11 @@ class Chip8EmulatorGUI extends PApplet {
   }
 
   override def setup(): Unit = {
-    background(218, 165, 32) // Background color for the emulator
+    background(218, 165, 32)
   }
 
   override def draw(): Unit = {
+    background(218, 165, 32)
     currentScreen match {
       case "emulator" => drawEmulatorScreen()
       case "menu" => drawMenuScreen()
@@ -38,7 +37,6 @@ class Chip8EmulatorGUI extends PApplet {
   }
 
   def drawEmulatorScreen(): Unit = {
-    background(218, 165, 32) // Background color for emulator
     if (!isRomLoaded) {
       drawRomLoaderButton()
     } else {
@@ -76,7 +74,6 @@ class Chip8EmulatorGUI extends PApplet {
   }
 
   def drawMenuScreen(): Unit = {
-    background(169, 169, 169)
     fill(255)
     textAlign(CENTER, CENTER)
     textSize(25)
@@ -107,19 +104,16 @@ class Chip8EmulatorGUI extends PApplet {
   }
 
   def drawConfirmScreen(): Unit = {
-    background(200, 100, 100)
     fill(255)
     textAlign(CENTER, CENTER)
     textSize(20)
     text(s"${if (isSaveMode) "Save" else "Load"} slot ${selectedSlot + 1} already occupied. Replace?", width / 2, height / 2 - 30)
 
-    // Yes button
     fill(0, 128, 0)
     rect(width / 2 - 70, height / 2 + 20, 60, 30)
     fill(255)
     text("Yes", width / 2 - 40, height / 2 + 35)
 
-    // No button
     fill(128, 0, 0)
     rect(width / 2 + 10, height / 2 + 20, 60, 30)
     fill(255)
@@ -135,12 +129,12 @@ class Chip8EmulatorGUI extends PApplet {
         openFileChooser()
       }
       else if (mouseX > 10 && mouseX < 110 && mouseY > 10 && mouseY < 50) {
-        currentScreen = "menu" // Switch to menu screen
+        currentScreen = "menu"
         Chip8Emulator.pause = true
       }
     } else if (currentScreen == "menu") {
       if (mouseX > 10 && mouseX < 110 && mouseY > 10 && mouseY < 50) {
-        currentScreen = "emulator" // Go back to emulator screen
+        currentScreen = "emulator"
         Chip8Emulator.pause = false
       }
       else if (mouseX > 240 && mouseX < 400 && mouseY > 60 && mouseY < 100) {
@@ -150,16 +144,28 @@ class Chip8EmulatorGUI extends PApplet {
           val buttonYPos = 120 + i * 45
           if (mouseX > 240 && mouseX < 400 && mouseY > buttonYPos && mouseY < buttonYPos + 40) {
             selectedSlot = i
-            val success = if (isSaveMode) Chip8Emulator.saveState(i, false) else Chip8Emulator.loadState(i)
-            if (!success && isSaveMode) currentScreen = "confirm"
-            else currentScreen = "emulator"
+            if (isSaveMode) {
+              if (!Chip8Emulator.saveState(i, false)) currentScreen = "confirm"
+              else {
+                currentScreen = "emulator"
+                Chip8Emulator.pause = false
+              }
+            }
+            else {
+              val success = Chip8Emulator.loadState(i)
+              if (success) {
+                currentScreen = "emulator"
+                Chip8Emulator.pause = false
+              }
+            }
           }
         }
       }
     } else if (currentScreen == "confirm") {
       if (mouseX > width / 2 - 70 && mouseX < width / 2 - 10 && mouseY > height / 2 + 20 && mouseY < height / 2 + 50) {
         Chip8Emulator.saveState(selectedSlot, true)
-        currentScreen = "menu"
+        currentScreen = "emulator"
+        Chip8Emulator.pause = false
       } else if (mouseX > width / 2 + 10 && mouseX < width / 2 + 70 && mouseY > height / 2 + 20 && mouseY < height / 2 + 50) {
         currentScreen = "menu"
       }
