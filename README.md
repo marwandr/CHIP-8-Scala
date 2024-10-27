@@ -61,10 +61,10 @@ This project implements the CHIP-8 architecture, providing an environment for ex
 
 1. To run the emulator, execute the following command:
    ```bash
-   ./gradlew run args=path/to/rom.ch8
+   ./gradlew run
    ```
-2. Load a CHIP-8 ROM by inlcuding its relative file path in the args. Otherwise the emulator won't be able to run.
-
+2. Load a CHIP-8 ROM through the file explorer within the GUI.
+3. You can save and load states through the menu within the GUI as well.
 
 ## Where to Find ROMs
 
