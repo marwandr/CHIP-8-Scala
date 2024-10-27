@@ -18,6 +18,7 @@ This project implements the CHIP-8 architecture, providing an environment for ex
 - Full implementation of the CHIP-8 instruction set.
 - Support for loading and running CHIP-8 ROMs.
 - Basic graphical user interface (GUI) for displaying graphics, using PApplet from the Processing framework.
+- Added save/load menu for saving and restoring game states
 
 ## System Requirements
 
@@ -78,8 +79,6 @@ In the future, several features may be added to enhance the functionality of the
 
 - **Settings Customizer**: Allow users to configure various emulator settings to suit their preferences.
 - **Colors Customizer**: Enable users to change the color scheme of the emulator for a more personalized experience.
-- **Integrated ROM Loader**: Provide a GUI option for loading CHIP-8 ROMs directly within the emulator.
-- **Comprehensive Emulator Menu**: Introduce a full menu system to streamline navigation and access to emulator features.
 - **Debugger Mode**: Implement a debugging interface that displays the stack, currently loaded instructions, registers, and other useful debugging information.
 
 ## License
