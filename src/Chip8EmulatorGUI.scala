@@ -17,8 +17,9 @@ class Chip8EmulatorGUI extends PApplet {
   private var romLoadTime: Long = 0L
   private val cooldownDuration: Long = 1000
   
-  private var currentScreen = "emulator" // "emulator" or "menu"
-  private var isSaveMode = true // toggles between save and load mode
+  private var currentScreen = "emulator"
+  private var isSaveMode = true
+  private var selectedSlot = -1
   
   override def settings(): Unit = {
     size(640, 320) // Window size
@@ -29,10 +30,10 @@ class Chip8EmulatorGUI extends PApplet {
   }
 
   override def draw(): Unit = {
-    if (currentScreen == "emulator") {
-      drawEmulatorScreen()
-    } else if (currentScreen == "menu") {
-      drawMenuScreen()
+    currentScreen match {
+      case "emulator" => drawEmulatorScreen()
+      case "menu" => drawMenuScreen()
+      case "confirm" => drawConfirmScreen()
     }
   }
 
@@ -105,6 +106,26 @@ class Chip8EmulatorGUI extends PApplet {
     }
   }
 
+  def drawConfirmScreen(): Unit = {
+    background(200, 100, 100)
+    fill(255)
+    textAlign(CENTER, CENTER)
+    textSize(20)
+    text(s"${if (isSaveMode) "Save" else "Load"} slot ${selectedSlot + 1} already occupied. Replace?", width / 2, height / 2 - 30)
+
+    // Yes button
+    fill(0, 128, 0)
+    rect(width / 2 - 70, height / 2 + 20, 60, 30)
+    fill(255)
+    text("Yes", width / 2 - 40, height / 2 + 35)
+
+    // No button
+    fill(128, 0, 0)
+    rect(width / 2 + 10, height / 2 + 20, 60, 30)
+    fill(255)
+    text("No", width / 2 + 40, height / 2 + 35)
+  }
+
   override def mousePressed(): Unit = {
     if (currentScreen == "emulator") {
       if (
@@ -123,24 +144,24 @@ class Chip8EmulatorGUI extends PApplet {
         Chip8Emulator.pause = false
       }
       else if (mouseX > 240 && mouseX < 400 && mouseY > 60 && mouseY < 100) {
-        isSaveMode = !isSaveMode // Toggle save/load mode
-      }
-      else {
+        isSaveMode = !isSaveMode
+      } else {
         for (i <- 0 until 10) {
           val buttonYPos = 120 + i * 45
           if (mouseX > 240 && mouseX < 400 && mouseY > buttonYPos && mouseY < buttonYPos + 40) {
-            var success = 0
-            if (isSaveMode) {
-              if !Chip8Emulator.saveState(i, false) {
-                Chip8Emulator.saveState(i, true)
-              }
-            } else {
-                if !Chip8Emulator.loadState(i, false) {
-                  Chip8Emulator.loadState(i, true)
-                }
-            }
+            selectedSlot = i
+            val success = if (isSaveMode) Chip8Emulator.saveState(i, false) else Chip8Emulator.loadState(i)
+            if (!success && isSaveMode) currentScreen = "confirm"
+            else currentScreen = "emulator"
           }
         }
+      }
+    } else if (currentScreen == "confirm") {
+      if (mouseX > width / 2 - 70 && mouseX < width / 2 - 10 && mouseY > height / 2 + 20 && mouseY < height / 2 + 50) {
+        Chip8Emulator.saveState(selectedSlot, true)
+        currentScreen = "menu"
+      } else if (mouseX > width / 2 + 10 && mouseX < width / 2 + 70 && mouseY > height / 2 + 20 && mouseY < height / 2 + 50) {
+        currentScreen = "menu"
       }
     }
   }

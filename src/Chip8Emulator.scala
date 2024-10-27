@@ -39,7 +39,7 @@ object Chip8Emulator {
   var settings = Settings.initialize
 
   // An array for the save states
-  var saveStates: Array
+  var saveStates: Array(null)
 
   // Pauses the main loop if true
   @volatile var pause = false
@@ -279,26 +279,26 @@ object Chip8Emulator {
     if (key != -1) keyStates(key) = Press
   }
 
-  def saveState(slot: Int, confirm: Boolean): Int = {
+  def saveState(slot: Int, confirm: Boolean): Boolean = {
     println(s"Saved state to slot $slot")
     if (saveStates(slot) == null) {
       saveStates(slot) = context.copy()
-      return 0
+      return true
     }
     else if (confirm) {
       saveStates(slot) = context.copy()
-      return 0
+      return true
     }
-    1
+    false
   }
 
-  def loadState(slot: Int): Int = {
+  def loadState(slot: Int): Boolean = {
     println(s"Loaded state from slot $slot")
     if (saveStates(slot) != null) {
       context = saveStates(slot).copy()
-      return 1
+      return true
     }
-    0
+    false
   }
 
   def updateTimers(): Unit = {
