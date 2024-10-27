@@ -18,6 +18,7 @@ class Chip8EmulatorGUI extends PApplet {
   private var currentScreen = "emulator"
   private var isSaveMode = true
   private var selectedSlot = -1
+  private var isMenuButtonVisible = false
   
   override def settings(): Unit = {
     size(640, 320) // Window size
@@ -41,7 +42,7 @@ class Chip8EmulatorGUI extends PApplet {
     } else {
       drawPixelsFromFramebuffer()
       showRomInfo()
-      drawMenuToggleButton()
+      if (isMenuButtonVisible) drawMenuToggleButton()
     }
   }
 
@@ -176,6 +177,14 @@ class Chip8EmulatorGUI extends PApplet {
   def openFileChooser(): Unit = {
     SwingUtilities.invokeLater(() => {
       val fileChooser = new JFileChooser()
+      val currentDir = new java.io.File(System.getProperty("user.dir"))
+      val romsDir = new java.io.File(currentDir, "roms")
+
+      if (!romsDir.exists()) {
+        romsDir.mkdir()
+      }
+
+      fileChooser.setCurrentDirectory(romsDir)
       val result = fileChooser.showOpenDialog(null)
 
       if (result == JFileChooser.APPROVE_OPTION) {
@@ -207,6 +216,9 @@ class Chip8EmulatorGUI extends PApplet {
   }
 
   override def keyPressed(): Unit = {
+    if (key == 'h' || key == 'H') {
+      isMenuButtonVisible = !isMenuButtonVisible
+    }
     Chip8Emulator.handleKey(keyCode, true)
   }
 

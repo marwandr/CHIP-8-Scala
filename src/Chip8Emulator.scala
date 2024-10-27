@@ -129,7 +129,6 @@ object Chip8Emulator {
         drawSprite(posX % SCREEN_WIDTH, posY % SCREEN_HEIGHT, height)
         context = context.copy(breakOut = true)
       case 0xe =>
-        print("E instruction: " + instr)
         kk match {
           case 0x9e =>
             if (keyStates(context.registers(x))) nextInstruction()  // Skip next instruction if key with the value of Vx is pressed.
@@ -271,7 +270,7 @@ object Chip8Emulator {
       case 'X' =>  0  // CHIP-8 key 0
       case 'C' => 11  // CHIP-8 key B
       case 'V' => 15  // CHIP-8 key F
-      case _   => println(key); -1  // Return -1 for unrecognized keys
+      case _   => -1  // Return -1 for unrecognized keys
     }
   }
 
@@ -336,10 +335,7 @@ object Chip8Emulator {
       if (!context.soundPlaying) {
         context = context.copy(soundPlaying = true)
         Future {
-          Sound.beep(440, 100)
-
-          val remainingSoundTime = context.ST * 100
-          Thread.sleep(remainingSoundTime)
+          Sound.beep(440, 60)
           context = context.copy(soundPlaying = false)
         }
       }
