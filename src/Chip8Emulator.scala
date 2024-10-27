@@ -38,6 +38,12 @@ object Chip8Emulator {
   // currently the settings are set to the default CHIP-8 settings
   var settings = Settings.initialize
 
+  // An array for the save states
+  var saveStates: Array
+
+  // Pauses the main loop if true
+  @volatile var pause = false
+
   // Load the font set into memory
   for (i <- 0 until FontSet.fontSet.length) {
     context.memory(0x50 + i) = FontSet.fontSet(i)
@@ -273,6 +279,28 @@ object Chip8Emulator {
     if (key != -1) keyStates(key) = Press
   }
 
+  def saveState(slot: Int, confirm: Boolean): Int = {
+    println(s"Saved state to slot $slot")
+    if (saveStates(slot) == null) {
+      saveStates(slot) = context.copy()
+      return 0
+    }
+    else if (confirm) {
+      saveStates(slot) = context.copy()
+      return 0
+    }
+    1
+  }
+
+  def loadState(slot: Int): Int = {
+    println(s"Loaded state from slot $slot")
+    if (saveStates(slot) != null) {
+      context = saveStates(slot).copy()
+      return 1
+    }
+    0
+  }
+
   def updateTimers(): Unit = {
     if (context.DT > 0) context = context.copy(DT = (context.DT - 1))
 
@@ -294,6 +322,10 @@ object Chip8Emulator {
     val instructionsPerFrame = 60
 
     while (context.running) {
+      while (pause) {
+        Thread.sleep(10)
+      }
+
       var i = 0
       val startTime = System.nanoTime()
 
