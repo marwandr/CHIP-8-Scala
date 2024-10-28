@@ -18,3 +18,4 @@ saves/
 *.class
 *.jar
 *.war
+.vscode/settings.json
