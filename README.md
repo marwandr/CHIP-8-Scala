@@ -18,7 +18,7 @@ This project implements the CHIP-8 architecture, providing an environment for ex
 - Full implementation of the CHIP-8 instruction set.
 - Support for loading and running CHIP-8 ROMs.
 - Basic graphical user interface (GUI) for displaying graphics, using PApplet from the Processing framework.
-- Added save/load menu for saving and restoring game states
+- Added save/load menu within the GUI for saving and restoring game states during the game.
 
 ## System Requirements
 
@@ -64,7 +64,8 @@ This project implements the CHIP-8 architecture, providing an environment for ex
    ./gradlew run
    ```
 2. Load a CHIP-8 ROM through the file explorer within the GUI.
-3. You can save and load states through the menu within the GUI as well.
+3. You can save and load states through the menu within the GUI as well,\
+   press "H" on the keyboard during the game to show the save/load menu button.
 
 ## Where to Find ROMs
 
